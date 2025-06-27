@@ -1,0 +1,4 @@
+if SHIELD_GMMK_PRO_ANSI
+    config ZMK_KEYBOARD_NAME
+        default "GMMK Pro ANSI"
+endif
