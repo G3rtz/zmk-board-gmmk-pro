@@ -1,4 +1,5 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <st/f3/stm32f303.dtsi>
 
 / {
     chosen {
@@ -69,5 +70,30 @@
         compatible = "zmk,keymap-sensors";
         sensors = <&encoder0>;
         triggers-per-rotation = <4>; // Standardwert, ggf. anpassen
+    };
+    &spi1 {
+        status = "okay";
+        pinctrl-0 = <&spi1_sck_a5 &spi1_mosi_a6 &spi1_miso_a7>;
+        pinctrl-names = "default";
+        cs-gpios = <&gpiob 13 GPIO_ACTIVE_LOW>, <&gpiob 14 GPIO_ACTIVE_LOW>;
+    };
+
+    led_matrix: aw20216s@0 {
+        compatible = "awinic,aw20216s";
+        reg = <0>;
+        spi-max-frequency = <10000000>;
+        enable-gpios = <&gpioc 13 GPIO_ACTIVE_HIGH>;
+        // Weitere Properties, sobald ein Treiber verfügbar ist
+    };
+    
+    &pinctrl {
+    spi1_sck_a5: spi1_sck_a5 {
+        pinmux = <STM32_PINMUX('A', 5, GPIO_AF5)>;
+    };
+    spi1_mosi_a6: spi1_mosi_a6 {
+        pinmux = <STM32_PINMUX('A', 6, GPIO_AF5)>;
+    };
+    spi1_miso_a7: spi1_miso_a7 {
+        pinmux = <STM32_PINMUX('A', 7, GPIO_AF5)>;
     };
 };

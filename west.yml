@@ -1,11 +1,16 @@
 manifest:
   remotes:
-    - name: remote-name
-      url-base: https://github.com/remote-name
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: g3rtz
+      url-base: https://github.com/G3rtz
   projects:
-    # Together with the above defined remote, this refers to a module located at
-    # https://github.com/remote-name/repository-name
-    - name: repository-name
-      remote: remote-name
-      # This points to a west manifest file in the remote module for further imports
-      import: west.yml
+    - name: zmk
+      remote: zmkfirmware
+      revision: main
+      import: app/west.yml
+    - name: zmk-module-aw20216s
+      remote: g3rtz
+      revision: main
+  self:
+    path: config
