@@ -1,2 +1,0 @@
-config BOARD_GMMK_PRO
-    def_bool $(boards_list_contains,gmmk_pro)
