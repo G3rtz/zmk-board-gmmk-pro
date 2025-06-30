@@ -1,4 +1,0 @@
-name: zmk-board-gmmk_pro
-build:
-  settings:
-    board_root: .
