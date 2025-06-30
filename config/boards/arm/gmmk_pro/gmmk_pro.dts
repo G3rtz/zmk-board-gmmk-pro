@@ -104,15 +104,16 @@
     * For more information, see:
     * http://docs.zephyrproject.org/latest/guides/dts/index.html#flash-partitions
     */
-partitions {
-    compatible = "fixed-partitions";
-    #address-cells = <1>;
-    #size-cells = <1>;
+    partitions {
+        compatible = "fixed-partitions";
+        #address-cells = <1>;
+        #size-cells = <1>;
 
-    /* Set 6Kb of storage at the end of the 256Kb of flash */
-    storage_partition: partition@3e800 {
-        reg = <0x0003e800 0x00001800>;
-    };
+        /* Set 6Kb of storage at the end of the 256Kb of flash */
+        storage_partition: partition@3e800 {
+            reg = <0x0003e800 0x00001800>;
+        };
+        };
 };
 
 zephyr_udc0: &usb {
